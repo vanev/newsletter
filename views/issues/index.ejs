@@ -1,0 +1,7 @@
+<ul>
+    <% issues.forEach(function(issue) { %>
+        <li>
+            <a href="/issues/<%= issue.id %>"><%= issue.name %></a>
+        </li>
+    <% }) %>
+</ul>

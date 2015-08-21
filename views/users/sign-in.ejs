@@ -1,0 +1,8 @@
+Success!
+
+<script>
+    var token = window.location.hash.replace("#", "").split("=")[1];
+    console.log(token);
+    document.cookie = "gs_trello_token="+token+";path=/;max-age=31536e3;";
+    window.location.href = "/issues";
+</script>
