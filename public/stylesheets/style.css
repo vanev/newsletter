@@ -1,8 +1,74 @@
+html,
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+}
+
+.wrapper {
+    width: 500px;
+    margin: 0 auto;
+}
+
+header {
+    padding: 20px 0;
+    border-bottom: 1px solid black;
+    margin-bottom: 40px;
+}
+nav a + a { margin-left: 10px; }
+
+ul {
+    margin:0;
+    padding:0;
+    list-style:none;
 }
 
 a {
-  color: #00B7FF;
+    color: #999999;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+main {
+    text-align: center;
+}
+main .header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #999999;
+    margin-bottom: 25px;
+}
+main .header h1,
+main .header h2,
+main .header h3,
+main .header h4,
+main .header h5,
+main .header h6 {
+    margin: 0 0 0.25em;
+    padding: 0;
+}
+main .header h1 { font-size: 1.5em; }
+main .header h2 { font-size: 1.2em; }
+main .header h3 { font-size: 1.1em; }
+main .header h4 { font-size: 1em; }
+main .header h5 { font-size: 0.8em; }
+main .header h6 { font-size: 0.75em; }
+
+main article {}
+main article h3 { margin: 0 0 0.25em; }
+main article p { margin: 0 0 0.25em; }
+main article + article { margin-top: 25px; }
+
+main .footer {
+    padding-top: 20px;
+    border-top: 1px solid #999999;
+    margin-top: 30px;
 }
