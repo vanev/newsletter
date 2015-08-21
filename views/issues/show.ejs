@@ -1,15 +1,22 @@
-<div style="width:500px; margin:0 auto;">
-    <h2><%= issue.name %></h2>
+<%- include ../partials/header %>
 
-    <ul style="margin:0;padding:0;list-style:none;">
-        <% articles.forEach(function(article) { %>
-            <li>
-                <h3><%= article.name %></h3>
-                <% article.attachments.forEach(function(attachment) { %>
-                    <img src="<%= attachment.url %>" style="max-width: 100%;" />
-                <% }) %>
-                <p><%- article.desc %></p>
-            </li>
-        <% }) %>
-    </ul>
-</div>
+<main>
+    <section class="header">
+        <%- header.desc %>
+    </section>
+
+    <% articles.forEach(function(article) { %>
+        <article>
+            <% article.attachments.forEach(function(attachment) { %>
+                <img src="<%= attachment.url %>" style="max-width: 100%;" />
+            <% }) %>
+            <p><%- article.desc %></p>
+        </article>
+    <% }) %>
+
+    <section class="footer">
+        <%- footer.desc %>
+    </section>
+</main>
+
+<%- include ../partials/footer %>

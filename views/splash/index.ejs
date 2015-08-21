@@ -1,3 +1,7 @@
+<%- include ../partials/header %>
+
 <h1>Welcome!</h1>
 
 <a href="https://trello.com/1/authorize?key=<%= process.env.NEWSLETTER_TRELLO_KEY %>&name=Newsletter&expiration=never&callback_method=fragment&return_url=http://localhost:3000/users/sign-in">Click Here to Sign In</a>
+
+<%- include ../partials/footer %>

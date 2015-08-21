@@ -20,13 +20,24 @@ router.get('/:id', function(req, res) {
         issue: function(callback) {
             t.get("/1/boards/" + req.params.id, callback);
         },
-        articles: function(callback) {
+        cards: function(callback) {
             t.get("/1/boards/" + req.params.id + "/cards", { attachments: true }, callback);
         }
     }, function(err, data) {
         if (err) throw err;
-        data.articles.forEach(function(article) {
-            article.desc = marked(article.desc);
+
+        data.cards.filter(function(card) {
+            return card.name.match(/(^_[a-zA-Z]*)/);
+        }).forEach(function(card) {
+            var name = card.name.match(/^_([a-zA-Z]*)/)[1];
+            data[name] = card;
+        });
+
+        data.articles = data.cards.map(function(card) {
+            card.desc = marked(card.desc);
+            return card;
+        }).filter(function(card) {
+            return !card.name.match(/(^_[a-zA-Z]*)/);
         });
         res.render('issues/show', data);
     });
