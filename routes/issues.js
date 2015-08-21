@@ -4,12 +4,10 @@ var Trello = require("node-trello");
 var async = require('async');
 var marked = require('marked');
 
-var ORGANIZATION_NAME = "groomservice";
-
 /* GET issues index */
 router.get('/', function(req, res) {
-    var t = new Trello(process.env.GROOM_SERVICE_TRELLO_KEY, req.cookies.gs_trello_token);
-    t.get("/1/organizations/" + ORGANIZATION_NAME + "/boards", function(err, data) {
+    var t = new Trello(process.env.NEWSLETTER_TRELLO_KEY, req.cookies.trello_token);
+    t.get("/1/organizations/" + process.env.NEWSLETTER_TRELLO_ORGANIZATION_NAME + "/boards", function(err, data) {
         if (err) throw err;
         res.render('issues/index', { issues: data });
     });
@@ -17,7 +15,7 @@ router.get('/', function(req, res) {
 
 /* GET issue show */
 router.get('/:id', function(req, res) {
-    var t = new Trello(process.env.GROOM_SERVICE_TRELLO_KEY, req.cookies.gs_trello_token);
+    var t = new Trello(process.env.NEWSLETTER_TRELLO_KEY, req.cookies.trello_token);
     async.parallel({
         issue: function(callback) {
             t.get("/1/boards/" + req.params.id, callback);
@@ -29,7 +27,6 @@ router.get('/:id', function(req, res) {
         if (err) throw err;
         data.articles.forEach(function(article) {
             article.desc = marked(article.desc);
-            console.log(article);
         });
         res.render('issues/show', data);
     });

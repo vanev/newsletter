@@ -8,7 +8,7 @@ router.get('/sign-in', function(req, res) {
 
 /* GET users sign out */
 router.get('/sign-out', function(req, res) {
-    res.clearCookie('gs_trello_token');
+    res.clearCookie('trello_token');
     res.redirect('/');
 });
 
